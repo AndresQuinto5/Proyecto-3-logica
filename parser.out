@@ -1,0 +1,335 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> CONSTANT
+Rule 2     expr -> VARIABLE
+Rule 3     expr -> NEG expr
+Rule 4     expr -> expr AND expr
+Rule 5     expr -> expr OR expr
+Rule 6     expr -> expr IF expr
+Rule 7     expr -> expr IFF expr
+Rule 8     expr -> LPAREN expr RPAREN
+
+Terminals, with rules where they appear
+
+AND                  : 4
+CONSTANT             : 1
+IF                   : 6
+IFF                  : 7
+LPAREN               : 8
+NEG                  : 3
+OR                   : 5
+RPAREN               : 8
+VARIABLE             : 2
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 3 4 4 5 5 6 6 7 7 8 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 1
+
+state 1
+
+    (0) S' -> expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             shift and go to state 6
+    OR              shift and go to state 7
+    IF              shift and go to state 8
+    IFF             shift and go to state 9
+
+
+state 2
+
+    (1) expr -> CONSTANT .
+
+    AND             reduce using rule 1 (expr -> CONSTANT .)
+    OR              reduce using rule 1 (expr -> CONSTANT .)
+    IF              reduce using rule 1 (expr -> CONSTANT .)
+    IFF             reduce using rule 1 (expr -> CONSTANT .)
+    $end            reduce using rule 1 (expr -> CONSTANT .)
+    RPAREN          reduce using rule 1 (expr -> CONSTANT .)
+
+
+state 3
+
+    (2) expr -> VARIABLE .
+
+    AND             reduce using rule 2 (expr -> VARIABLE .)
+    OR              reduce using rule 2 (expr -> VARIABLE .)
+    IF              reduce using rule 2 (expr -> VARIABLE .)
+    IFF             reduce using rule 2 (expr -> VARIABLE .)
+    $end            reduce using rule 2 (expr -> VARIABLE .)
+    RPAREN          reduce using rule 2 (expr -> VARIABLE .)
+
+
+state 4
+
+    (3) expr -> NEG . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 10
+
+state 5
+
+    (8) expr -> LPAREN . expr RPAREN
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 11
+
+state 6
+
+    (4) expr -> expr AND . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 12
+
+state 7
+
+    (5) expr -> expr OR . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 13
+
+state 8
+
+    (6) expr -> expr IF . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 14
+
+state 9
+
+    (7) expr -> expr IFF . expr
+    (1) expr -> . CONSTANT
+    (2) expr -> . VARIABLE
+    (3) expr -> . NEG expr
+    (4) expr -> . expr AND expr
+    (5) expr -> . expr OR expr
+    (6) expr -> . expr IF expr
+    (7) expr -> . expr IFF expr
+    (8) expr -> . LPAREN expr RPAREN
+
+    CONSTANT        shift and go to state 2
+    VARIABLE        shift and go to state 3
+    NEG             shift and go to state 4
+    LPAREN          shift and go to state 5
+
+    expr                           shift and go to state 15
+
+state 10
+
+    (3) expr -> NEG expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             reduce using rule 3 (expr -> NEG expr .)
+    OR              reduce using rule 3 (expr -> NEG expr .)
+    IF              reduce using rule 3 (expr -> NEG expr .)
+    IFF             reduce using rule 3 (expr -> NEG expr .)
+    $end            reduce using rule 3 (expr -> NEG expr .)
+    RPAREN          reduce using rule 3 (expr -> NEG expr .)
+
+  ! AND             [ shift and go to state 6 ]
+  ! OR              [ shift and go to state 7 ]
+  ! IF              [ shift and go to state 8 ]
+  ! IFF             [ shift and go to state 9 ]
+
+
+state 11
+
+    (8) expr -> LPAREN expr . RPAREN
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    RPAREN          shift and go to state 16
+    AND             shift and go to state 6
+    OR              shift and go to state 7
+    IF              shift and go to state 8
+    IFF             shift and go to state 9
+
+
+state 12
+
+    (4) expr -> expr AND expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             reduce using rule 4 (expr -> expr AND expr .)
+    OR              reduce using rule 4 (expr -> expr AND expr .)
+    $end            reduce using rule 4 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 4 (expr -> expr AND expr .)
+    IF              shift and go to state 8
+    IFF             shift and go to state 9
+
+  ! IF              [ reduce using rule 4 (expr -> expr AND expr .) ]
+  ! IFF             [ reduce using rule 4 (expr -> expr AND expr .) ]
+  ! AND             [ shift and go to state 6 ]
+  ! OR              [ shift and go to state 7 ]
+
+
+state 13
+
+    (5) expr -> expr OR expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             reduce using rule 5 (expr -> expr OR expr .)
+    OR              reduce using rule 5 (expr -> expr OR expr .)
+    $end            reduce using rule 5 (expr -> expr OR expr .)
+    RPAREN          reduce using rule 5 (expr -> expr OR expr .)
+    IF              shift and go to state 8
+    IFF             shift and go to state 9
+
+  ! IF              [ reduce using rule 5 (expr -> expr OR expr .) ]
+  ! IFF             [ reduce using rule 5 (expr -> expr OR expr .) ]
+  ! AND             [ shift and go to state 6 ]
+  ! OR              [ shift and go to state 7 ]
+
+
+state 14
+
+    (6) expr -> expr IF expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             reduce using rule 6 (expr -> expr IF expr .)
+    OR              reduce using rule 6 (expr -> expr IF expr .)
+    IF              reduce using rule 6 (expr -> expr IF expr .)
+    IFF             reduce using rule 6 (expr -> expr IF expr .)
+    $end            reduce using rule 6 (expr -> expr IF expr .)
+    RPAREN          reduce using rule 6 (expr -> expr IF expr .)
+
+  ! AND             [ shift and go to state 6 ]
+  ! OR              [ shift and go to state 7 ]
+  ! IF              [ shift and go to state 8 ]
+  ! IFF             [ shift and go to state 9 ]
+
+
+state 15
+
+    (7) expr -> expr IFF expr .
+    (4) expr -> expr . AND expr
+    (5) expr -> expr . OR expr
+    (6) expr -> expr . IF expr
+    (7) expr -> expr . IFF expr
+
+    AND             reduce using rule 7 (expr -> expr IFF expr .)
+    OR              reduce using rule 7 (expr -> expr IFF expr .)
+    IF              reduce using rule 7 (expr -> expr IFF expr .)
+    IFF             reduce using rule 7 (expr -> expr IFF expr .)
+    $end            reduce using rule 7 (expr -> expr IFF expr .)
+    RPAREN          reduce using rule 7 (expr -> expr IFF expr .)
+
+  ! AND             [ shift and go to state 6 ]
+  ! OR              [ shift and go to state 7 ]
+  ! IF              [ shift and go to state 8 ]
+  ! IFF             [ shift and go to state 9 ]
+
+
+state 16
+
+    (8) expr -> LPAREN expr RPAREN .
+
+    AND             reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    OR              reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    IF              reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    IFF             reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    $end            reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 8 (expr -> LPAREN expr RPAREN .)
+
